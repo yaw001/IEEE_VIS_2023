@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ensemble mean perception precision</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="dist/client.js"></script>
+    <script src="dist/dataio.js"></script>
+    <script src="dist/config.js"></script>
+    <script src="dist/instruction.js"></script>
+</head>
+
+
+<body onload="pageLoad()">
+    <div id="consent" class="screen">
+        <h1 class="mtitle">University of California, San Diego<br>
+            Consent to act as a research subject</h1>
+        <p> Edward Vul, Ph.D. is conducting a research study about mean position perception.
+            You have been asked to participate because you are an undergraduate here at UCSD. <br><br>
+            <b>PROCEDURES.</b> If you agree to participate in this study, the following will happen to you:<br>
+            1. You will see a display of objects.<br>
+            2. Your task is to estimate the average position of these objects.<br><br>
+            <b>RISKS</b>. No potential risks or discomforts are anticipated except for the possibility that some tasks
+            may be slightly boring.<br><br>
+            PAYMENT/REMUNERATION<b></b>. In consideration of your time and inconvenience, you will receive half hour of
+            course credit. The procedures and length of participation will last approximately 15-20 minutes.<br><br>
+            <b>RIGHTS.</b> You may call the UCSD Human Research Protection Program at 858-657-5100 to ask about your
+            rights as a research subject or to report research-related problems.<br><br>
+            <b>BENEFITS</b>. There will be no direct benefit to you from these procedures. However, the investigator may
+            learn more about basic questions pertaining to attention, memory, perception, cognition.<br><br>
+            <b>EXPLANATION.</b> The researcher has explained this study to you and answered your questions. If you have
+            questions or research related problems, you may reach Edward Vul at 858-534-4401.<br><br>
+            <b>VOLUNTARY NATURE OF PARTICIPATION.</b> Participation in research is entirely voluntary. You may refuse to
+            participate or withdraw at any time without penalty.<br><br>
+            <b>CONFIDENTIALITY.</b> Research records will be kept confidential to the extent allowed by law. As with all
+            research, there is also the possibility of loss of confidentiality. Information from participants will be
+            identified by a study number. The database which relates the study number to a specific subject will be
+            maintained in the study coordinators office.<br><br>
+            <b>COPY OF CONSENT.</b> You have received a copy of this consent document to keep and a copy of the
+            Experimental Bill of Rights.
+        </p>
+        <button class="instruction_btn" onclick="clickConsent();"> Click here to consent and agree to
+            participate</button>
+    </div>
+
+    <div id="instruction" class="screen">
+        <p class="instruction">
+            In each trial, you will see a display of data points in a scatterplot. Three examples are shown below.
+        </p>
+
+        <img src="img/example_1.png" alt="example_1" class="center" style="width: 20%">
+        <img src="img/example_2.png" alt="example_2" class="center" style="width: 20%">
+        <img src="img/example_3.png" alt="example_3" class="center" style="width: 20%">
+
+
+        <p class="instruction">
+            <span class="underline">Your goal is to estimate the mean value of these data points (or equivalently, the center of mass of the data).</span> A red cross will show up at the
+            estimated mean value position after your click. You have unlimited attempts for your responses by clicking on a different estimated position as you wish.
+            Finalize your decision by clicking the "SUBMIT" button.
+            <span class="underline">You will not be able to change your response after clicking the "SUBMIT"
+                button.</span>
+        </p>
+        <img src="img/instruction_img.png" alt="instruction_1" class="center" style="width: 25%">
+
+        <p class="instruction">After finalizing the response and clicking the "SUBMIT" button, the button turns to
+            "NEXT" and click for the next trial <span class="underline"></p>
+        <p class="instruction">You will start with 3 practice trials to get familiar with the task  </p>
+        <p class="instruction"><span class="underline">You will not be provided with feedback throughout the experiment (i.e., you will not be informed about the true mean positions).</span></p>
+        <p class="instruction">There will be total of 403 trials (3 practice trials + 400 experiment trials)(about 30mins). <span
+                class="underline">Please provide your most intuitive and best estimation!</span></p>
+        <button class="instruction_btn" onclick="clickPractice()">Click here to start</button>
+    </div>
+
+    <div id="instruction_num" class="screen">
+        <p class="instruction">
+            In each trial, you will see a display of data points in a scatterplot. Three examples are shown below.
+        </p>
+
+        <img src="img/example_1.png" alt="example_1" class="center" style="width: 20%">
+        <img src="img/example_2.png" alt="example_2" class="center" style="width: 20%">
+        <img src="img/example_3.png" alt="example_3" class="center" style="width: 20%">
+
+
+        <p class="instruction">
+            <span class="underline">Your goal is to estimate the number of data points for each of the groups. The data points will be presented for variable time and disappear.
+                Input your estimates into the boxes corresponding to each group.
+            </span> 
+            Finalize your decision by clicking the "SUBMIT" button.
+            <span class="underline">You will not be able to change your response after clicking the "SUBMIT"
+                button.</span>
+        </p>
+        <img src="img/instruction_num_img_1.png" alt="instruction_1" class="center" style="width: 25%">
+        <img src="img/instruction_num_img_2.png" alt="instruction_2" class="center" style="width: 25%">
+
+        <p class="instruction">After finalizing the response and clicking the "SUBMIT" button, the button turns to
+            "NEXT" and click for the next trial <span class="underline">(The trial starts immediately after the click)</span>.
+        </p>
+
+        <p class="instruction">You will start with 3 practice trials to get familiar with the task </p>
+        <p class="instruction"><span class="underline">You will not be provided with feedback throughout the experiment.</span></p>
+        <p class="instruction">There will be total of 500 trials (6 practice trials + 500 experiment trials)(about 1 hour).
+            <span class="underline">Please provide your most intuitive and best estimation!</span></p>
+
+        <button class="instruction_btn" onclick="clickPractice_num()">Click here to start</button>
+    </div>
+
+    <div id="practice">
+        <p class="welcome">Click START for practice trials</p>
+        <button class="instruction_btn" id="btn_p" onclick="clickTrials();">START</button>
+    </div>
+    <div id="trials">
+        <p class="welcome">Click START for experiment trials</p>
+        <button class="instruction_btn" id="btn_t">START</button>
+
+    </div>
+
+    <div id="position">
+        <canvas id="canvas">
+            This text is displayed if your browser does not support HTML5 Canvas.
+        </canvas>
+        <!-- <img id = "coordinate" src = "img/Coordinate.png" style = "width: 40%"> -->
+        <button id="btn">START</button>
+        <!-- <button id="Submit">SUBMIT</button> -->
+    </div>
+
+
+
+    <div id="clockdiv">
+        <h1>Break</h1>
+        <h2><span class="underline">The trial will start after the break!</span></h2>
+        <!-- <div>
+            <span class="days"></span>
+            <div class="smalltext">Days</div>
+        </div>
+        <div>
+            <span class="hours"></span>
+            <div class="smalltext">Hours</div>
+        </div> -->
+        <div>
+            <span class="minutes"></span>
+            <div class="smalltext">Minutes</div>
+        </div>
+        <div>
+            <span class="seconds"></span>
+            <div class="smalltext">Seconds</div>
+        </div>
+    </div>
+
+    <!-- <input type="number" id="num_estimate_1" class="num_input">
+    <input type="number" id="num_estimate_2" class="num_input"> -->
+
+
+    <script src="node_modules/jstat/dist/jstat.js"></script>
+    <script src="dist/all_sample.js"></script>
+
+    <!-- <script src="node_modules/requirejs/require.js"></script> -->
+    <script src="dist/helper.js"></script>
+    <script src="dist/shape.js"></script>
+    <script src="dist/canvas.js"></script>
+    <script src="dist/trial.js"></script>
+
+    <div id="completed" class="screen">
+        <center>
+            <p class="mtitle"> Thank you for participating in the experiment! </p>
+        </center>
+        <button class="instruction_btn" id="finished" onclick="experimentDone();">Click here to complete study.</button>
+    </div>
+</body>
+
+</html>
